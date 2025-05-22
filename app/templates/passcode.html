@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>パスコード認証</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/passcode.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h2>パスコードを入力してください</h2>
+
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" novalidate>
+      <input type="text" name="passcode" maxlength="6" required placeholder="6桁のパスコード" />
+      <button type="submit">送信</button>
+    </form>
+  </div>
+</body>
+</html>

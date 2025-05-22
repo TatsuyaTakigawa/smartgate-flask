@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>ログアウト完了</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/logout_notice.css') }}">
+  <script>
+    // 5秒後にトップページへ自動リダイレクト
+    setTimeout(function() {
+      window.location.href = "{{ url_for('passcode.welcome') }}";
+    }, 5000);
+  </script>
+</head>
+<body>
+  <h2>ログアウトしました。</h2>
+  <p>5秒後にトップページへ戻ります...</p>
+</body>
+</html>

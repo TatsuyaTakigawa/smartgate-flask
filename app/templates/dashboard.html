@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>SmartGate ダッシュボード</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+
+  <h1>ようこそ、{{ current_user.username }}さん</h1>
+
+  <section class="description">
+    <h2>SmartGateとは？</h2>
+    <p>
+      SmartGateは、滝川達也の自宅のスマートロックを安全に管理できるシステムです。
+    </p>
+    <p>
+      本システムでは、<strong>1時間から最大24時間まで有効な6桁の一時パスコード</strong>を生成できます。
+      このコードを使えば、滝川達也が許可した相手が一時的に自宅の鍵を開けられるようになります。
+    </p>
+    <p>
+      パスコードの生成には、<strong>滝川達也に関する複数の質問にすべて正解する必要があります</strong>。
+      セキュリティ確保のため、<strong>3回間違えると一定時間再試行できなくなります</strong>。
+    </p>
+  </section>
+
+  <section class="description">
+    <h2>注意事項</h2>
+    <p>
+      - パスコードは、<strong>1時間から最大24時間まで有効</strong>です。<br>
+      - パスコードの生成には、<strong>滝川達也に関する複数の質問にすべて正解する必要があります</strong>。<br>
+      - セキュリティ確保のため、<strong>3回間違えると一定時間再試行できなくなります</strong>。
+    </p>
+  </section>
+
+  <section class="action">
+    <a href="{{ url_for('code.generate') }}" class="button">🔓 パスコードを生成する</a>
+  </section>
+
+  <footer class="footer">
+    <a href="{{ url_for('auth.logout') }}" class="logout-button">ログアウト</a>
+  </footer>
+
+</body>
+</html>

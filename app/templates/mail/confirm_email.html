@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p>以下のリンクをクリックしてアカウントを有効化してください:</p>
+    <p><a href="{{ url_for('auth.confirm_email', token=token, _external=True) }}">アカウント認証リンク</a></p>
+    <p>このリンクは1時間で無効になります。</p>
+  </body>
+</html>

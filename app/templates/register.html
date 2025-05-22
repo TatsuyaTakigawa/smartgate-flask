@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ユーザー登録 - SmartGate</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+</head>
+<body>
+
+  <h1 style="text-align:center;">ユーザー登録</h1>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="flash-messages">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <form action="{{ url_for('auth.register') }}" method="POST" novalidate>
+    <input type="text" name="username" placeholder="ユーザー名" required />
+
+    <input type="email" name="email" placeholder="メールアドレス" required />
+
+    <input type="password"
+           name="password"
+           placeholder="パスワード"
+           required
+           pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+]).{8,}"
+           title="8文字以上、大文字・小文字・数字・記号を含めてください" />
+
+    <small>※ パスワードは8文字以上で、大文字・小文字・数字・記号を含めてください。</small>
+
+    <button type="submit">登録</button>
+  </form>
+
+  <p style="text-align: center; margin-top: 20px;">
+    すでにアカウントをお持ちですか？<br>
+    <a href="{{ url_for('auth.login') }}">こちらからログイン</a>
+  </p>
+
+</body>
+</html>
