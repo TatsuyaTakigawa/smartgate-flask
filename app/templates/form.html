@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartGate クイズ</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+</head>
+<body>
+  <h1>SmartGate クイズ</h1>
+  <p>全問正解した場合のみ、鍵を開ける6桁パスコードが表示されます。</p>
+
+  <form method="POST" action="/submit">
+    <div class="form-group">
+      <label for="name">お名前を入力してください:</label>
+      <input type="text" id="name" name="name" required placeholder="名前を入力">
+    </div>
+
+    <div class="form-group">
+      <label for="valid_hours">有効時間（1〜24時間）:</label>
+      <select id="valid_hours" name="valid_hours" required>
+        <option value="">選択してください</option>
+        {% for i in range(1, 25) %}
+          <option value="{{ i }}">{{ i }} 時間</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>滝川達也の生年月日はいつ？</label>
+      {% for option, text in [('A', '1994-01-09'), ('B', '1994-12-21'), ('C', '2002-10-17'), ('D', '2004-07-01'), ('E', '2006-08-01')] %}
+      <div class="form-check">
+        <input type="radio" name="q1" value="{{ option }}" required>
+        <label>{{ option }}: {{ text }}</label>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="form-group">
+      <label>滝川達也の出身地はどこ？</label>
+      {% for option, text in [('A', '福岡県福岡市'), ('B', '佐賀県鳥栖市'), ('C', '大分県日田市'), ('D', '福岡県久留米市')] %}
+      <div class="form-check">
+        <input type="radio" name="q2" value="{{ option }}" required>
+        <label>{{ option }}: {{ text }}</label>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="form-group">
+      <label>滝川達也の通っていた小学校はどこ？</label>
+      {% for option, text in [('A', '光岡小学校'), ('B', '日隈小学校'), ('C', '石井小学校'), ('D', '筑波大学付属小学校')] %}
+      <div class="form-check">
+        <input type="radio" name="q3" value="{{ option }}" required>
+        <label>{{ option }}: {{ text }}</label>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="form-group">
+      <label>滝川達也が一番長くしていたスポーツは？</label>
+      {% for option, text in [('A', '陸上'), ('B', 'アメフト'), ('C', '野球'), ('D', 'サッカー')] %}
+      <div class="form-check">
+        <input type="radio" name="q4" value="{{ option }}" required>
+        <label>{{ option }}: {{ text }}</label>
+      </div>
+      {% endfor %}
+    </div>
+
+    <button type="submit">回答</button>
+  </form>
+</body>
+</html>
