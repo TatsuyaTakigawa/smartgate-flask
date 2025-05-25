@@ -14,7 +14,7 @@ import os
 passcode_bp = Blueprint("passcode", __name__)
 
 @passcode_bp.route("/", methods=["GET", "POST"])
-def passcode():
+def enter_passcode():
     """
     パスコード入力ページと認証処理を提供。
 
@@ -44,4 +44,4 @@ def welcome():
     """
     if not session.get("passed_passcode"):
         return redirect(url_for("passcode.passcode"))
-    return redirect("/home")
+    return redirect(url_for("auth.home"))
