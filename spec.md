@@ -125,14 +125,6 @@ SmartGate/
 └── spec.md                     # 本仕様書ファイル
 ```
 
-## ✅ 今後の予定
-
-- 画面設計（※パスコード入力画面を追加）
-- 画面遷移図の更新
-- DB 設計（パスコード保存不要。環境変数などで管理可）
-- API 設計
-- 実装フェーズへ
-
 ## 🔸 参照リンク
 
 - [SwitchBotAPI](https://github.com/OpenWonderLabs/SwitchBotAPI)
