@@ -1,0 +1,111 @@
+/* ベーススタイル */
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #f0f8ff; /* 明るめの青系背景 */
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* 見出し */
+h1 {
+  text-align: center;
+  margin: 40px 0 10px;
+  font-size: 2em;
+  color: #2c3e50;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.1em;
+  color: #34495e;
+}
+
+/* フォーム全体 */
+form {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  padding: 30px;
+  width: 90%;
+}
+
+/* 各フォームグループ */
+.form-group {
+  margin-bottom: 25px;
+}
+
+/* ラベル */
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+/* テキスト入力とセレクト */
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fdfefe;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
+  outline: none;
+}
+
+/* ラジオボタンのオプション */
+.form-check {
+  margin-bottom: 10px;
+}
+
+.form-check label {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.form-check:hover label {
+  background-color: #ecf6ff;
+}
+
+.form-check input[type="radio"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+  accent-color: #3498db;
+  vertical-align: middle;
+}
+
+/* 送信ボタン */
+button[type="submit"] {
+  display: block;
+  margin: 30px auto 0;
+  background-color: #007bff;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
