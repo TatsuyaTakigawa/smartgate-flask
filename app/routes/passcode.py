@@ -1,40 +1,47 @@
+# app/routes/passcode.py
+
+"""
+passcode.py
+
+このモジュールは、SmartGateのパスコード認証に関するルーティングを担当します。
+訪問者が一時的なパスコードでアクセスできるようにするための認証処理を提供します。
+"""
+
 from flask import Blueprint, render_template, request, redirect, session, url_for
 import os
 
-# パスコード認証用のBlueprint
+# Blueprintの作成（'passcode' という名前のルートグループ）
 passcode_bp = Blueprint("passcode", __name__)
 
 @passcode_bp.route("/", methods=["GET", "POST"])
 def passcode():
     """
-    パスコード入力画面の表示と認証処理。
-    POST時に入力されたパスコードを環境変数の正解パスコードと比較。
-    合っていればsessionにフラグを立ててウェルカムページへリダイレクト。
-    間違っていればエラーメッセージを表示。
-    GET時は入力フォームを表示。
+    パスコード入力ページと認証処理を提供。
+
+    - GET: パスコード入力フォームを表示
+    - POST: 入力パスコードを検証し、正しければセッションに通過フラグを保存
+    - 誤りがあればエラーメッセージ付きで再表示
     """
-    correct_passcode = os.getenv("PASSCODE", "123456")  # デフォルトは123456
+    correct_passcode = os.getenv("PASSCODE", "123456")  # 環境変数からパスコード取得（デフォルト123456）
 
     if request.method == "POST":
         entered = request.form.get("passcode")
         if entered == correct_passcode:
-            session["passed_passcode"] = True  # パスコード認証通過のフラグをセット
+            session["passed_passcode"] = True  # 成功したらフラグをセッションに保存
             return redirect(url_for("passcode.welcome"))
         else:
-            # エラーメッセージを渡して再表示
             return render_template("passcode.html", error="パスコードが違います。")
 
-    # GET時はパスコード入力フォームを表示
-    return render_template("passcode.html")
+    return render_template("passcode.html")  # GET時
 
 @passcode_bp.route("/welcome")
 def welcome():
     """
-    パスコード認証通過後にアクセス可能なウェルカムページ。
-    通過していなければパスコード入力ページにリダイレクト。
+    パスコード認証後のリダイレクト用ページ。
+
+    - 認証を通過していない場合は再度パスコード入力ページへ。
+    - 通過していれば '/home' にリダイレクト。
     """
     if not session.get("passed_passcode"):
         return redirect(url_for("passcode.passcode"))
-    # 認証済みの場合はregister.htmlを表示（必要に応じて変更可能）
     return redirect("/home")
-
