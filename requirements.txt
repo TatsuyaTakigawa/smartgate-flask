@@ -1,0 +1,16 @@
+# Flask 関連
+Flask>=2.3,<3.0
+Flask-Login>=0.6
+Flask-Mail>=0.9.1
+
+# .env 読み込み用
+python-dotenv>=1.0.0
+
+# セキュリティ・署名関連
+itsdangerous>=2.1.2
+
+# HTTPリクエスト処理
+requests>=2.31.0
+
+# パスワードハッシュ用
+Werkzeug>=2.3.0
